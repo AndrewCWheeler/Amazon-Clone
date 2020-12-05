@@ -8,7 +8,6 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from './reducer';
 import { db } from './firebase';
-import { CssBaseline } from '@material-ui/core';
 
 export const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue();
