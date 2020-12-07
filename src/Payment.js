@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from './axios';
 import CheckoutProduct from './CheckoutProduct';
 import './Payment.css';
@@ -34,11 +34,13 @@ export const Payment = () => {
     getClientSecret();
   }, [basket]);
 
-  console.log('THE SECRET IS >>>>', clientSecret);
-
   const handleSubmit = async (event) => {
     // do all the fancy strip stuff...
     event.preventDefault();
+    if (!user){
+      alert("Please sign in to your account to make a purchase.")
+      return;
+    }
     setProcessing(true);
 
     const payload = await stripe.confirmCardPayment(clientSecret, {
@@ -74,7 +76,7 @@ export const Payment = () => {
 
   const handleChange = event => {
     // Listen for changes in the CardElement
-    // and display any errors aws the customer types their card details
+    // and display any errors as the customer types their card details
     setDisabled(event.empty);
     setError(event.error ? event.error.message : '');
   }
