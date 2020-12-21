@@ -1,6 +1,7 @@
 export const initialState = {
   basket: [],
-  user: null
+  user: null,
+  search: '',
 };
 
 // Selector
@@ -10,6 +11,11 @@ export const getBasketTotal = (basket) =>
 const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
+    case "SET_SEARCH":
+      return {
+        search: action.item,
+      }
+
     case "ADD_TO_BASKET":
       return {
         ...state,

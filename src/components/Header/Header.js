@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Link } from 'react-router-dom';
-import { useStateValue } from './StateProvider';
-import { auth } from './firebase';
+import { useStateValue } from '../../StateProvider';
+import { auth } from '../../firebase';
 
 function Header() {
   const [{basket, user}, dispatch] = useStateValue();
@@ -15,6 +15,13 @@ function Header() {
     }
   }
 
+  const handleSearch = (e) => {
+    dispatch({
+      type: "SET_SEARCH",
+      value: e.target.value,
+    })
+  }
+
   return (
     <div className='header'>
       <Link to="/">
@@ -22,7 +29,7 @@ function Header() {
       </Link>
 
       <div className="header__search">
-        <input type="text" className="header__searchInput"/>
+        <input type="text" id="search" name="search" onChange={handleSearch} className="header__searchInput"/>
         <SearchIcon className='header__searchIcon' />
       </div>
       

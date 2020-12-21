@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Home.css";
-import Product from './Product';
+import Product from '../../components/Product/Product';
 
 function Home() {
   return (
@@ -47,17 +47,21 @@ function Home() {
           />
         </div>
         <div className="home__row">
-          <Product
-            id="49538098"
-            title="Men's Vapor Glove 3 Trail Runner"
-            price={74.95} 
-            rating={5}
-            image='https://m.media-amazon.com/images/I/7123Xz-1W2L._AC_UL640_FMwebp_QL65_.jpg'
-          />
+            <Product
+              id="49538098"
+              title="Men's Vapor Glove 3 Trail Runner"
+              price={74.95} 
+              rating={5}
+              image='https://m.media-amazon.com/images/I/7123Xz-1W2L._AC_UL640_FMwebp_QL65_.jpg'
+            />
         </div>
       </div>
     </div>
   )
 }
 
-export default Home
+export default Home;
+
+
+  
+
