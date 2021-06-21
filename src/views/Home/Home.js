@@ -17,7 +17,7 @@ function Home() {
           />
           <Product
             id="49538094"
-            title='Kenwood KMC011 5 Quart Chef Titanium Kitchen Machine, Stainless Steel' 
+            title='Kenwood KMC011 5 Quart Chef Titanium Kitchen Machine, Stainless Steel'
             price={455.95} 
             rating={5}
             image='https://images-na.ssl-images-amazon.com/images/I/81FgudLSgPL._AC_SL1500_.jpg'

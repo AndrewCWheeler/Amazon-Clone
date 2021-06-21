@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Header from '../src/components/Header/Header';
 import Home from '../src/views/Home/Home';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Checkout from './views/Checkout/Checkout';
 import Login from '../src/views/Login/Login';
 import { auth } from './firebase';
@@ -12,14 +12,14 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { Orders } from './views/Orders/Orders';
 
-const promise = loadStripe('pk_test_51GvQePKA8MgT44kMkOez7O3ZOz0qrPiSgMBXk9Jhjx7zEiVvABKfgSFaMW72cAAkDH8qK9AApTCNyx7wUeDrTpae004NaoVDP1');
+const promise = loadStripe(
+  'pk_test_51GvQePKA8MgT44kMkOez7O3ZOz0qrPiSgMBXk9Jhjx7zEiVvABKfgSFaMW72cAAkDH8qK9AApTCNyx7wUeDrTpae004NaoVDP1'
+);
 
 function App() {
-
   const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
-
     auth.onAuthStateChanged(authUser => {
       console.log('THE USER IS >>>> ', authUser);
       if (authUser) {
@@ -27,42 +27,41 @@ function App() {
 
         dispatch({
           type: 'SET_USER',
-          user: authUser
-        })
-      }
-      else {
+          user: authUser,
+        });
+      } else {
         // the user is logged out
         dispatch({
           type: 'SET_USER',
-          user: null
-        })
+          user: null,
+        });
       }
-    })
+    });
   }, []);
 
   return (
     // BEM
     <Router>
-      <div className="app">
+      <div className='app'>
         <Switch>
           <Route path='/orders'>
             <Header />
             <Orders />
           </Route>
-          <Route path="/login">
+          <Route path='/login'>
             <Login />
           </Route>
-          <Route path="/checkout">
+          <Route path='/checkout'>
             <Header />
             <Checkout />
           </Route>
           <Route path='/payment'>
             <Header />
-            <Elements stripe={promise}> 
+            <Elements stripe={promise}>
               <Payment />
             </Elements>
           </Route>
-          <Route path="/">
+          <Route path='/'>
             <Header />
             <Home />
           </Route>
